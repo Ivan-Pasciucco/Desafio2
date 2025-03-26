@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Alumno } from '../directives/interfaces/Alumno';
-import { Pipe, PipeTransform } from '@angular/core';
 
 
 @Component({
@@ -10,45 +9,12 @@ import { Pipe, PipeTransform } from '@angular/core';
   styleUrl: './app-content.component.css'
 })
 export class AppContentComponent {
-
-  public nuevoAlumno: Alumno = {
-    firstName: '',
-    lastName: '',
-    fullName: '',
-    dni: 0,
-    age: 0,
-    course: '',
-    isActive: false,
-    photo: '',
-  };
-
+  public nuevoAlumno: Alumno = this.getEmptyAlumno();
 
   public Alumnos: Alumno[] = [
-    {
-      firstName: 'Juan',
-      lastName: 'Perez',
-      fullName: 'Juan Perez',
-      dni: 12345678,
-      age: 25,
-      course: 'Angular',
-      isActive: false,
-      photo: '',
-    }
   ];
-
-  showData(): void {
-    console.log(this.Alumnos);
-  }
-
-  clearData(): void {
-    this.Alumnos = [];
-  }
-
-  addAlumno(): void {
-    this.nuevoAlumno.fullName = `${this.nuevoAlumno.firstName} ${this.nuevoAlumno.lastName}`;
-    this.Alumnos.push({ ...this.nuevoAlumno });
-
-    // Limpiar el formulario
+  constructor() { }
+  private resetForm(): void {
     this.nuevoAlumno = {
       firstName: '',
       lastName: '',
@@ -57,10 +23,40 @@ export class AppContentComponent {
       age: 0,
       course: '',
       isActive: false,
-      photo: '',
+      photo: 'https://picsum.photos/200/300',
+    };
+  }
+  private getEmptyAlumno(): Alumno {
+    return {
+      firstName: '',
+      lastName: '',
+      fullName: '',
+      dni: 0,
+      age: 0,
+      course: '',
+      isActive: false,
+      photo: 'https://picsum.photos/200/300',
     };
   }
 
+  showData(): void {
+    console.log(this.Alumnos);
+  }
+
+  clearData(): void {
+    this.Alumnos = [];
+    this.resetForm();
+  }
+
+  addAlumno(): void {
+    if (!this.nuevoAlumno.firstName || !this.nuevoAlumno.lastName || !this.nuevoAlumno.course) {
+      alert('Por favor, completa los campos obligatorios.');
+      return;
+    }
+    this.nuevoAlumno.fullName = `${this.nuevoAlumno.firstName} ${this.nuevoAlumno.lastName}`;
+    this.Alumnos.push({ ...this.nuevoAlumno });
+    this.resetForm();
+  }
 
 }
 
