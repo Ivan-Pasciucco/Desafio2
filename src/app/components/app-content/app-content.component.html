@@ -1,0 +1,36 @@
+<div class="main-container">
+  <!-- Lista de alumnos -->
+  <div class="students-list">
+    <h1>Lista de alumnos</h1>
+    <div class="card" *ngFor="let Alumno of Alumnos">
+      <img [src]="Alumno.photo" alt="{{Alumno.firstName}} {{Alumno.lastName}}">
+      <div class="container">
+        <h4><b>{{Alumno.firstName}} {{Alumno.lastName}}</b></h4>
+        <p>Edad: {{Alumno.age}}</p>
+        <p>Curso: {{Alumno.course}}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Formulario para agregar alumnos -->
+  <div class="form-container">
+    <h2>Agregar Alumno</h2>
+    <form (ngSubmit)="addAlumno()">
+      <input type="text" placeholder="Nombre" [(ngModel)]="nuevoAlumno.firstName" name="firstName" class="form-input" required>
+      <input type="text" placeholder="Apellido" [(ngModel)]="nuevoAlumno.lastName" name="lastName" class="form-input" required>
+      <input type="number" placeholder="DNI" [(ngModel)]="nuevoAlumno.dni" name="dni" class="form-input" required>
+      <input type="number" placeholder="Edad" [(ngModel)]="nuevoAlumno.age" name="age" class="form-input" required>
+      <input type="text" placeholder="Curso" [(ngModel)]="nuevoAlumno.course" name="course" class="form-input" required>
+
+      <label class="form-label">
+        Activo
+        <input type="checkbox" [(ngModel)]="nuevoAlumno.isActive" name="isActive" class="form-checkbox">
+      </label>
+
+      <div class="form-actions">
+        <button type="submit" class="form-button">Agregar alumno</button>
+        <button type="button" (click)="clearData()" class="form-button form-button-danger">Limpiar</button>
+      </div>
+    </form>
+  </div>
+</div>

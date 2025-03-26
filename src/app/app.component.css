@@ -1,0 +1,32 @@
+h1 {
+  background-color: #deb887;
+  /* blurywood color */
+}
+
+div {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-template-columns: 20vw 1fr;
+  grid-template-areas: "navbar navbar" "sidebar content" "directives content"; ;
+  height: 100vh;
+}
+
+.navbar {
+  grid-area: navbar;
+  background-color: dodgerblue;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  background-color: powderblue;
+}
+
+.content {
+  grid-area: content;
+  background-color: whitesmoke;
+}

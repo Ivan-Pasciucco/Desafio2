@@ -1,0 +1,68 @@
+<!-- <ul> -->
+  <!-- @for (Alumno of Alumnos; track Alumno.dni) { -->
+  <!-- ========== Directivas condicionales ========== -->
+  <!-- @if(Alumno.isActivo != false) {
+  <li> -->
+    <!-- {{Alumno.nombre}}{{Alumno.apellido}} -
+    {{Alumno.edad}} -->
+    <!-- {{Alumno | json}}
+  </li>
+  } @else {
+  <li>
+    <p>{{"El alumno no esta activo" | uppercase}}</p>
+  </li>
+  }
+  }@empty {
+  <p>No hay alumnos</p>
+  }
+</ul> -->
+
+<!-- ========== Directivas switch ========== -->
+
+<!-- <ul>
+  @for (Alumno of Alumnos; track Alumno.dni) {
+  @switch(Alumno.age >18) {
+  @case(true) {
+  <li>
+    {{Alumno.firstName}}{{Alumno.lastName}} -
+    {{Alumno.age}}
+    <span>El alumno es mayor de edad</span>
+  </li>
+  }
+  @case(false) {
+  <li>
+    {{Alumno.firstName}}{{Alumno.lastName}} -
+    {{Alumno.age}}
+    <span>El alumno es menor de edad</span>
+  </li>
+  }
+  @default {
+  <li>
+    <p>El alumno no tiene 18 ni mas ni menos</p>
+  </li>
+  }
+  }
+  }
+</ul> -->
+
+<!-- ========== Template statements ========== -->
+
+<!-- ========== two way data binding doble vinculacion corechete parentesis ========== -->
+<div class="form-container">
+  <input type="text" placeholder="Nombre" [(ngModel)]="nuevoAlumno.firstName" class="form-input">
+  <input type="text" placeholder="Apellido" [(ngModel)]="nuevoAlumno.lastName" class="form-input">
+  <input type="number" placeholder="DNI" [(ngModel)]="nuevoAlumno.dni" class="form-input">
+  <input type="number" placeholder="Edad" [(ngModel)]="nuevoAlumno.age" class="form-input">
+  <input type="text" placeholder="Curso" [(ngModel)]="nuevoAlumno.course" class="form-input">
+  <label class="form-label">
+    Activo
+    <input type="checkbox" [(ngModel)]="nuevoAlumno.isActive" class="form-checkbox">
+  </label>
+
+  <button (click)="addAlumno()" class="form-button">Add Student</button>
+  <!-- <button (click)="showData()">Mostrar datos por consola</button> -->
+  <button (click)="clearData()" class="form-button">Clear Record</button>
+</div>
+
+
+<!-- ========== Directivas de atributos ========== -->
